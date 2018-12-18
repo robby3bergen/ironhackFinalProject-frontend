@@ -31,11 +31,6 @@ class Ingredients extends Component {
     })
   }
 
-  // ============== save ingredients in the database
-  handleSaveButtonClick(event) {
-    
-  }
-
   // ============== convert image into text upon screenshot
   handleScreenshot = (imageBase64String) => {
     // close camera
@@ -59,8 +54,7 @@ class Ingredients extends Component {
         <h1>Ingredients</h1>
         <button name="getIngredients" onClick={this.handleClick}>get ingredients</button>
         <Camera showCamera={this.state.showCamera} onCapture={this.handleScreenshot} />
-        <IngredientsList ingredientInformation={this.state.ingredientInformation} />
-        <button name="saveIngredients" onClick={this.handleSaveButtonClick}>save ingredients</button>
+        <IngredientsList ingredientInformation={this.state.ingredientInformation} saveIngredients={ingredient.saveIngredients} />
       </div>
     )
   }

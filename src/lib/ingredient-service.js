@@ -19,8 +19,13 @@ class Ingredient {
     return this.ingredient.get('/ingredient/list')
     .then(response => response);
   }
-
   
+  // =========== POST ingredients and store them in database
+  save(arrIngredients) {
+    console.log(arrIngredients);
+    return this.ingredient.post('/ingredient', arrIngredients)
+    .then(({ data }) => data);
+  }
 
   // =========== GET Request to Google Cloud Vision API to convert image into text
   getTextFromImage(imageBase64String) {
