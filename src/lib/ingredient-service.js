@@ -20,10 +20,10 @@ class Ingredient {
     .then(response => response);
   }
   
-  // =========== POST ingredients and store them in database
-  save(arrIngredients) {
-    console.log(arrIngredients);
-    return this.ingredient.post('/ingredient', arrIngredients)
+  // =========== POST: save ingredients and user preference in the database
+  save(ingredientName, userPreference) {
+    console.log(ingredient);
+    return this.ingredient.post('/ingredient', { ingredientName, userPreference })
     .then(({ data }) => data);
   }
 

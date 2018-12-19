@@ -44,7 +44,7 @@ class Ingredients extends Component {
       this.setState({ingredientInformation: textAnnotations})
     })
     .catch((error) => {
-      console.log('something went wrong in the Google Cloud Vision request')
+      console.log(error, 'something went wrong in the Google Cloud Vision request')
     })
   }
 

@@ -6,20 +6,17 @@ class IngredientCard extends Component {
     showCard: true
   }
 
-  addToFavorites = (event) => {
+  saveUserPreference = (event) => {
     event.preventDefault();
-    ingredient.save([this.props.ingredient])
+    ingredient.save(this.props.ingredient, event.target.name)
     .then( (result) => {
       console.log('result from backend: ' + result);
       })
     .catch( error => console.log(error) )
   }
 
-  // addToAvoidList
-
   removeCard = (event) => {
     event.preventDefault();
-    console.log('button remove clicked');
     this.setState({ showCard: false} );
   }
 
@@ -28,8 +25,8 @@ class IngredientCard extends Component {
       return (
         <div>
           <p>{this.props.ingredient}</p>
-          <button name="favorite" onClick={this.addToFavorites}>:)</button>
-          <button name="avoid" onClick={this.addToAvoidList}>!</button>
+          <button name="favorite" onClick={this.saveUserPreference}>:)</button>
+          <button name="avoid" onClick={this.saveUserPreference}>!</button>
           <button name="remove" onClick={this.removeCard}>x</button>
         </div>
       )
