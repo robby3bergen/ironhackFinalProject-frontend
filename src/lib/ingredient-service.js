@@ -10,7 +10,7 @@ class Ingredient {
 
     // set up Google Cloud Vision API
     this.googleVision = axios.create({
-      baseURL: `https://vision.googleapis.com/v1`
+      baseURL: `${process.env.REACT_APP_GOOGLE_CLOUD_VISION_API_URL}`
     });
   }
 
@@ -55,7 +55,7 @@ class Ingredient {
     }
 
     // request to Google Cloud Vision api
-    return this.googleVision.post(`/images:annotate?key=${process.env.GOOGLE_CLOUD_VISION_API_KEY}`, requestBody)
+    return this.googleVision.post(`/images:annotate?key=${process.env.REACT_APP_GOOGLE_CLOUD_VISION_API_KEY}`, requestBody)
     .then((response) => {
       console.log(response);
       return response.data.responses[0].textAnnotations

@@ -11,8 +11,6 @@ import AuthProvider from './providers/AuthProvider';
 import Home from './pages/Home';
 import Ingredients from './pages/Ingredients';
 
-// require('dotenv').config();
-
 class App extends Component {
   render() {
     return (
