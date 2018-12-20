@@ -15,22 +15,6 @@ class Ingredients extends Component {
     console.log('ingredient component did mount');
   }
 
-  // ============== get ingredients information from the database upon button click
-  handleClick(event) {
-    // prevent the page from refreshing
-    event.preventDefault();
-
-    // send request to the backend api
-    ingredient.get()
-    .then((ingredient) => {
-      //this.setState(ingredient);
-      console.log(ingredient);
-    })
-    .catch((error) => {
-      console.log('something went wrong');
-    })
-  }
-
   // ============== convert image into text upon screenshot
   handleScreenshot = (imageBase64String) => {
     // close camera
@@ -52,7 +36,6 @@ class Ingredients extends Component {
     return (
       <div>
         <h1>Ingredients</h1>
-        <button name="getIngredients" onClick={this.handleClick}>get ingredients</button>
         <Camera showCamera={this.state.showCamera} onCapture={this.handleScreenshot} />
         <IngredientsList ingredientInformation={this.state.ingredientInformation} saveIngredients={ingredient.saveIngredients} />
       </div>

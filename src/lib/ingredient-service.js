@@ -14,13 +14,13 @@ class Ingredient {
     });
   }
 
-  // =========== GET all user ingedrients from backend server/database
-  get() {
-    return this.ingredient.get('/ingredient/list')
+  // =========== get all user ingredients from backend server/database
+  getUserIngredients(ingredients) {
+    return this.ingredient.post('/ingredient/list', ingredients)
     .then(response => response);
   }
   
-  // =========== POST: save ingredients and user preference in the database
+  // =========== save ingredients and user preference in the database
   save(ingredientName, userPreference) {
     console.log(ingredient);
     return this.ingredient.post('/ingredient', { ingredientName, userPreference })

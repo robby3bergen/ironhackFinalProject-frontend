@@ -3,10 +3,43 @@ import IngredientCard from './IngredientCard';
 import ingredient from '../lib/ingredient-service';
 
 class IngredientsList extends Component {
+  state = {
+    lookupForPreferences: {}
+  }
+
   ingredients = [];
   
+    // ============== get ingredients information from the database upon button click
+    getUserPreferences = (event) => {  
+      // send request to the backend api
+      ingredient.getUserIngredients({ ingredients: this.ingredients })
+      .then((result) => {
+        const lookupForPreferences = {};
+        this.ingredients.forEach(ingredient => {
+          lookupForPreferences[ingredient] = 'unknown';
+        })
+
+        // store each user preference in the lookup object
+        result.data.ingredients.forEach(ingredient => {
+          const name = ingredient.ingredient_id.name;
+          const preference = ingredient.preference;
+          console.log('name: ' + name + 'preference: ' + preference);
+          
+          if (lookupForPreferences[name]) {
+            console.log(lookupForPreferences[name]);
+            lookupForPreferences[name] = preference;
+          }
+        })
+        //console.log(lookupForPreferences);
+        this.setState({lookupForPreferences: lookupForPreferences});
+        console.log(this.state.lookupForPreferences);
+      })
+      .catch((error) => {
+        console.log('something went wrong');
+      })
+    }
+
   saveIngredients = (event) => {
-    event.preventDefault();
     ingredient.save(this.ingredients)
     .then( (result) => {
       console.log('result from backend: ' + result);
@@ -18,7 +51,6 @@ class IngredientsList extends Component {
     if (!this.props.ingredientInformation) {
       return null;
     }
-
     // get product description of whatever text is before 'INGREDIENTES'
     let ingredientInformation = this.props.ingredientInformation[0].description; // string containing the text from the image
     let regexIngredients = /(ingredients|ingredientes|ingredienti|ingrédients|zutaten|ingrediënten):?/gi;
@@ -47,11 +79,12 @@ class IngredientsList extends Component {
         <ul>
           {this.ingredients.map((ingredient, index) => {
             return <li key={index}>
-              <IngredientCard key={index} ingredient={ingredient} />
+              <IngredientCard key={index} ingredient={ingredient} ingred={this.state.lookupForPreferences} />
             </li>
           })}          
         </ul>
         <button name="saveIngredients" onClick={this.saveIngredients}>save ingredients</button>
+        <button name="getIngredients" onClick={this.getUserPreferences}>get user preferences</button>
       </div>
     )
   }

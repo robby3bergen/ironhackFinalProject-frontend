@@ -25,6 +25,7 @@ class IngredientCard extends Component {
       return (
         <div>
           <p>{this.props.ingredient}</p>
+          <p>{this.props.ingred[this.props.ingredient]}</p>
           <button name="favorite" onClick={this.saveUserPreference}>:)</button>
           <button name="avoid" onClick={this.saveUserPreference}>!</button>
           <button name="remove" onClick={this.removeCard}>x</button>
