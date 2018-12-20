@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Navbar from './components/Navbar';
 import Private from './pages/Private';
@@ -16,8 +16,7 @@ class App extends Component {
     return (
       <AuthProvider>
          <Navbar />
-        <div className="container">
-         
+        <div className="container">         
           <Switch>
               <Route exact path="/" component={Home} />
               <AnonRoute path="/signup" component={Signup} />

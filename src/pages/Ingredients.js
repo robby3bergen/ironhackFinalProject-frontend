@@ -32,7 +32,6 @@ class Ingredients extends Component {
   render() {    
     return (
       <div>
-        <h1>Ingredients</h1>
         {/* { this.state.showCamera ? <Camrera /> : null} */}
         <Camera showCamera={this.state.showCamera} onCapture={this.handleScreenshot} />
         <IngredientsList ingredientInformation={this.state.ingredientInformation} saveIngredients={ingredient.saveIngredients} />

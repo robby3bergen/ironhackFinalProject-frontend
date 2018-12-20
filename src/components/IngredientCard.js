@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import ingredient from '../lib/ingredient-service';
+import alertImage from '../images/alert.png';
+import alertImageSet from '../images/alert-filled.png';
+import favoriteImage from '../images/favorite.png';
+import favoriteImageSet from '../images/favorite-filled.png';
+import trashImage from '../images/trash.png';
 
 class IngredientCard extends Component {
   constructor(props) {
@@ -30,10 +35,10 @@ class IngredientCard extends Component {
       return (
         <div>
           <p>{this.props.ingredient}</p>
-          <p>{this.props.ingred[this.props.ingredient]}</p>
-          <button name="favorite" className={`${this.props.ingred[this.props.ingredient]} button-favorite`} onClick={this.saveUserPreference}>:)</button>
-          <button name="avoid" className={`${this.props.ingred[this.props.ingredient]} button-avoid`} onClick={this.saveUserPreference}>!</button>
-          <button name="remove" onClick={this.removeCard}>x</button>
+          {/* <p>{this.props.ingred[this.props.ingredient]}</p> */}
+          <button name="avoid" className={`${this.props.ingred[this.props.ingredient]} button-avoid`} onClick={this.saveUserPreference}><img src={alertImage} alt="alert"/></button>
+          <button name="favorite" className={`${this.props.ingred[this.props.ingredient]} button-favorite`} onClick={this.saveUserPreference}><img src={favoriteImage} alt="favorite"/></button>
+          <button name="remove" onClick={this.removeCard}><img src={trashImage} alt="favorite"/></button>
         </div>
       )
     } else {

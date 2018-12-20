@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
-import cameraIcon from '../images/camera.svg';
+import cameraIcon from '../images/camera.png';
 
 class Navbar extends Component {
 
