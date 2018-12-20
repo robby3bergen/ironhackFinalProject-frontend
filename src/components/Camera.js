@@ -41,8 +41,8 @@ class Camera extends Component {
           width={320} // 350
           videoConstraints={videoConstraints}
         />
-        </div>
         <button className="btn-capture" onClick={this.capture}>scan</button>
+        </div>
       </div>
     );
   }

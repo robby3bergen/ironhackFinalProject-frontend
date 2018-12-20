@@ -7,10 +7,21 @@ class IngredientsList extends Component {
     lookupForPreferences: {}
   }
 
+  handlePreferences = (newPreference, ingredient) => {
+    console.log('new Preference', newPreference)
+    console.log('ingrid', ingredient)
+    const preferences = {...this.state.lookupForPreferences}
+    preferences[ingredient] = newPreference
+    this.setState({
+      lookupForPreferences: preferences
+    })
+  }
+
   ingredients = [];
   
     // ============== get ingredients information from the database upon button click
-    getUserPreferences = (event) => {  
+    getUserPreferences = (event) => {
+      event.preventDefault()  
       // send request to the backend api
       ingredient.getUserIngredients({ ingredients: this.ingredients })
       .then((result) => {
@@ -23,16 +34,13 @@ class IngredientsList extends Component {
         result.data.ingredients.forEach(ingredient => {
           const name = ingredient.ingredient_id.name;
           const preference = ingredient.preference;
-          console.log('name: ' + name + 'preference: ' + preference);
           
           if (lookupForPreferences[name]) {
-            console.log(lookupForPreferences[name]);
             lookupForPreferences[name] = preference;
           }
         })
         //console.log(lookupForPreferences);
         this.setState({lookupForPreferences: lookupForPreferences});
-        console.log(this.state.lookupForPreferences);
       })
       .catch((error) => {
         console.log('something went wrong');
@@ -42,10 +50,12 @@ class IngredientsList extends Component {
   saveIngredients = (event) => {
     ingredient.save(this.ingredients)
     .then( (result) => {
-      console.log('result from backend: ' + result);
+      // console.log('result from backend: ' + result);
       })
     .catch( error => console.log(error) )
   }
+
+  
 
   render() {
     if (!this.props.ingredientInformation) {
@@ -79,7 +89,7 @@ class IngredientsList extends Component {
         <ul>
           {this.ingredients.map((ingredient, index) => {
             return <li key={index}>
-              <IngredientCard key={index} ingredient={ingredient} ingred={this.state.lookupForPreferences} />
+              <IngredientCard key={index} ingredient={ingredient} ingred={this.state.lookupForPreferences} setPreference={this.handlePreferences}/>
             </li>
           })}          
         </ul>

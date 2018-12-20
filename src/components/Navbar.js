@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
+import cameraIcon from '../images/camera.svg';
+
 class Navbar extends Component {
 
   renderIsLoggedIn = () => {
     return <div>
-      <p>username: {this.props.user.username}</p>
-      <p onClick={this.props.logout}>Logout</p>
+      <nav className="nav-header">
+        <h1>Pickingry</h1>
+        <p onClick={this.props.logout}>Logout</p>
+      </nav>
+      <nav className="nav-footer">
+        <Link to="/ingredients"><img src={cameraIcon} alt="camera"/></Link>
+      </nav>
     </div>
   }
 

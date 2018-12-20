@@ -6,7 +6,8 @@ class Private extends Component {
     
     return (
       <div>
-        <h1>Hi {this.props.user.username}! Welcome at Pickingry!!</h1>
+        <p>Hi {this.props.user.username}!</p>
+        <h2>Instructions</h2>
       </div>
     )
   }

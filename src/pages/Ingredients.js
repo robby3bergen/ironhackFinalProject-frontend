@@ -20,11 +20,8 @@ class Ingredients extends Component {
     // close camera
     this.setState({showCamera: false});
 
-    console.log('handle screenshot');
-
     ingredient.getTextFromImage(imageBase64String)
     .then((textAnnotations) => {
-      //console.log(textAnnotations);
       this.setState({ingredientInformation: textAnnotations})
     })
     .catch((error) => {
@@ -36,6 +33,7 @@ class Ingredients extends Component {
     return (
       <div>
         <h1>Ingredients</h1>
+        {/* { this.state.showCamera ? <Camrera /> : null} */}
         <Camera showCamera={this.state.showCamera} onCapture={this.handleScreenshot} />
         <IngredientsList ingredientInformation={this.state.ingredientInformation} saveIngredients={ingredient.saveIngredients} />
       </div>

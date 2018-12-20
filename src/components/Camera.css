@@ -3,21 +3,24 @@ body {
 }
 
 .webcam {
-  position: absolute;
+  position: fixed;
+  height: 100vh;
   margin: 0;
   padding: 0;
   top: 0px;
   left: 0px;
+  z-index: 999;
 }
 
 .btn-capture {
   position: absolute;
-  top: 475px;
+  bottom: 2rem;
   display: block;
   z-index: 999;
   width: 70px;
   height: 70px;
-  margin: 0 111px;
+  left: 50%;
+  margin-left: -35px;
   padding: 5px;
   background-color: transparent;
   border-radius: 180px;
