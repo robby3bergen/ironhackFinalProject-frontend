@@ -11,10 +11,6 @@ class Ingredients extends Component {
     ingredient: null
   }
 
-  componentDidMount() {
-    console.log('ingredient component did mount');
-  }
-
   // ============== convert image into text upon screenshot
   handleScreenshot = (imageBase64String) => {
     // close camera

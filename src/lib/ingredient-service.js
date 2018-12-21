@@ -22,7 +22,6 @@ class Ingredient {
   
   // =========== save ingredients and user preference in the database
   save(ingredientName, userPreference) {
-    console.log(ingredient);
     return this.ingredient.post('/ingredient', { ingredientName, userPreference })
     .then(({ data }) => data);
   }
@@ -30,7 +29,6 @@ class Ingredient {
   // =========== GET Request to Google Cloud Vision API to convert image into text
   getTextFromImage(imageBase64String) {
     imageBase64String = imageBase64String.substring(22) // trim 'data:image/png;base64,' from the Base64 string
-    console.log(imageBase64String);
     
     const requestBody = {
       "requests" : [
@@ -57,7 +55,6 @@ class Ingredient {
     // request to Google Cloud Vision api
     return this.googleVision.post(`/images:annotate?key=${process.env.REACT_APP_GOOGLE_CLOUD_VISION_API_KEY}`, requestBody)
     .then((response) => {
-      console.log(response);
       return response.data.responses[0].textAnnotations
     });    
   }

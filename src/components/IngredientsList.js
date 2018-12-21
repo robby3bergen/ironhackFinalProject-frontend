@@ -8,8 +8,6 @@ class IngredientsList extends Component {
   }
 
   handlePreferences = (newPreference, ingredient) => {
-    console.log('new Preference', newPreference)
-    console.log('ingrid', ingredient)
     const preferences = {...this.state.lookupForPreferences}
     preferences[ingredient] = newPreference
     this.setState({
@@ -39,7 +37,6 @@ class IngredientsList extends Component {
             lookupForPreferences[name] = preference;
           }
         })
-        //console.log(lookupForPreferences);
         this.setState({lookupForPreferences: lookupForPreferences});
       })
       .catch((error) => {
@@ -54,8 +51,6 @@ class IngredientsList extends Component {
       })
     .catch( error => console.log(error) )
   }
-
-  
 
   render() {
     if (!this.props.ingredientInformation) {
