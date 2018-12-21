@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ingredient from '../lib/ingredient-service';
 import alertImage from '../images/alert.png';
-import alertImageSet from '../images/alert-filled.png';
+//import alertImageSet from '../images/alert-filled.png';
 import favoriteImage from '../images/favorite.png';
-import favoriteImageSet from '../images/favorite-filled.png';
+//import favoriteImageSet from '../images/favorite-filled.png';
 import trashImage from '../images/trash.png';
 
 class IngredientCard extends Component {
